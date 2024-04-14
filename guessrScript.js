@@ -7,6 +7,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let marker;
+let actualLocationMarker;
+let gameStats = document.getElementById("gameStats");
 let lat;
 let lng;
 map.on('click', function(e) {
@@ -104,7 +106,7 @@ let entries = [
     },
     { 
         place: { latitude:59.38853016959553, longitude: 18.0447765306432}, 
-        time: 1882,
+        time: 1982,
         description: "Mörby verkstad, 1982",
         imgSrc:"img12.png"
     },
@@ -189,14 +191,17 @@ button.addEventListener('click', function() {
         //display this in the alert
         let diffYear = Math.abs(sliderValue-entry.time);
     
-        let actualLocationMarker = L.marker([entry.place.latitude, entry.place.longitude]).addTo(map);
+        actualLocationMarker = L.marker([entry.place.latitude, entry.place.longitude]).addTo(map);
         // Create a polyline from the marker to the entry's place
         const points = [
             [lat, lng],
             [entry.place.latitude, entry.place.longitude]
         ];
         polyline = L.polyline(points, { color: 'red' }).addTo(map);
-    
+        
+        gameStats.innerHTML = "You were " + Math.round(resDistance) + " meters away" +
+                                "<br>" + entry.time + ". Difference in Years: " + diffYear +
+                                "<br>" + "Description: " +  entry.description;
         alert("You were " + Math.round(resDistance) + " meters away" +
               "\nDifference in Years: " + diffYear +
               "\nDescription " +  entry.description);
@@ -214,12 +219,14 @@ function reset(){
     if (marker) {
         map.removeLayer(marker);
     }
+    if (actualLocationMarker) {
+        map.removeLayer(actualLocationMarker);
+    }
     map.setView([59.32460795459639, 18.069763183593754], 12);
 
     entry = getRandomEntry();
     image.src = "img/" + entry.imgSrc
 
-    // Remove existing marker and polyline if they exist
     if (marker) {
         map.removeLayer(marker);
     }
