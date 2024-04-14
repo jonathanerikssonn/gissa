@@ -157,7 +157,25 @@ let entries = [
         time: 2019,
         description: "Fyllekörning",
         imgSrc: "img20.jpg"
-    }  
+    },
+    { 
+        place: { latitude: 59.39347609911354, longitude: 18.08208269093347}, 
+        time: 2008,
+        description: "Ortenrappare",
+        imgSrc: "img21.jpg"
+    },
+    { 
+        place: { latitude: 58.21795030345507, longitude: 11.431271492758633}, 
+        time: 2023,
+        description: "Spatsera",
+        imgSrc: "img22.jpg"
+    },
+    { 
+        place: { latitude: 62.73132643826745, longitude: 12.453836251470374}, 
+        time: 2018,
+        description: "Bergsbestigare",
+        imgSrc: "img23.jpg"
+    }   
 ];
 
 let usedIndex = [];
@@ -202,6 +220,8 @@ button.addEventListener('click', function() {
         gameStats.innerHTML = "You were " + Math.round(resDistance) + " meters away" +
                                 "<br>" + entry.time + ". Difference in Years: " + diffYear +
                                 "<br>" + "Description: " +  entry.description;
+
+        map.setView([entry.place.latitude, entry.place.longitude], 16);
         //alert("You were " + Math.round(resDistance) + " meters away" +
         //      "\nDifference in Years: " + diffYear +
         //      "\nDescription " +  entry.description);
