@@ -202,13 +202,14 @@ button.addEventListener('click', function() {
         gameStats.innerHTML = "You were " + Math.round(resDistance) + " meters away" +
                                 "<br>" + entry.time + ". Difference in Years: " + diffYear +
                                 "<br>" + "Description: " +  entry.description;
-        alert("You were " + Math.round(resDistance) + " meters away" +
-              "\nDifference in Years: " + diffYear +
-              "\nDescription " +  entry.description);
+        //alert("You were " + Math.round(resDistance) + " meters away" +
+        //      "\nDifference in Years: " + diffYear +
+        //      "\nDescription " +  entry.description);
 
         buttonState++;
     } else if(buttonState == 1){
         reset()
+        gameStats.innerHTML = "";
         buttonState = 0;
     }
 
