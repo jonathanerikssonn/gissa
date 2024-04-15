@@ -49,20 +49,17 @@
 }
 
 #imageContainer {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 950vw; /* Maximum width relative to viewport width */
-  max-height: 95vh; /* Maximum height relative to viewport height */
+  display: flex;
+  height: 100vh;
+  justify-content: center;
   z-index: -9999;
 }
 
 #image {
-  display: block;
-  margin: auto; /* Center horizontally */
+  /*display: block;
+  margin: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 100%;*/
 }
 
 #gameStats {
